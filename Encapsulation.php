@@ -24,7 +24,7 @@ class Employee{
         }
     }
     
-    //$obj1 = new Employee("Hari", 25, "Hari@gmail.com");
+    //$obj1 = new Employee("Ram", 25, "Ram@gmail.com");
     $obj1 = new Employee();
     $obj1->setProperties("Ram", 25, "ram@gmail.com");
     echo "Name: " . $obj1->getName() . "<br>";
