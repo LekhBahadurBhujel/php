@@ -1,74 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<?php 
+        include ("connection.php");
+            if($_SERVER["REQUEST_METHOD"]=="POST"){
+                $username=$connection->real_escape_string($_POST["username"]);
+                $email=$connection->real_escape_string($_POST["email"]);
+                $password=$connection->real_escape_string($_POST["password"]);
+                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+                //INSERT DATA INTO DATABASE
+
+                $sql= "INSERT INTO users (username,email,password) VALUES ('$username','$email','$hashedPassword')";
+                if($connection->query($sql) == TRUE){
+                    echo 'Registration successful';
+                    header("Refresh:1; url=login.php");
+                    exit();
+                }
+                else{
+                    echo "Error: ".$connection->error."<br>";
+                }
+            }
+
+            $connection->close();
+        ?>
+        
+<!DOCTYPE html> 
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #5cb85c;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #4cae4c;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-    </style>
+    <title>Register Form</title>
+    <link href="login.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-    <div>
+    <div class="wrapper">
         <h2>Register</h2>
-        <form action="register_process.php" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br><br>
+        <form method="POST" action="register.php">
+            <div class="input-box">
+                <input type="text" placeholder="Username" id="username" name="username" required> 
+            </div>
+            <div class="input-box">
+                <input type="email" placeholder="Email" id="email" name="email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" id="password" name="password" required>
+            </div>
+
+
+                <button type="submit" class="btn">Done</button>
             
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
-            
-            <input type="submit" value="Register">
-        </form>
+
+    </div>
+    </form>
     </div>
 </body>
+
 </html>

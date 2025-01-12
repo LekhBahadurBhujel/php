@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login Form</title>
+    <link href="login.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-    <h2>Login Form</h2>
-    <form action="login_process.php" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <input type="submit" value="Submit">
+    <div class="wrapper">
+        <h2>Login</h2>
+        <form action="POST">
+            <div class="input-box">
+                <input type="text" placeholder="Username" id="username" name="username" required> 
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" id="password" name="password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember">
+                <label>
+                    <input type="checkbox"> Remember Me
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+            <div class="register">
+                <p>Don't have an account?
+                    <a href="register.php">Register</a>
+                </p>
+            </div>
+
+    </div>
     </form>
+    </div>
 </body>
+
 </html>
