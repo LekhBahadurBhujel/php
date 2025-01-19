@@ -1,6 +1,5 @@
-
 <?php 
-        include ("connection.php");
+        include ("Connection.php");
             if($_SERVER["REQUEST_METHOD"]=="POST"){
                 $username=$connection->real_escape_string($_POST["username"]);
                 $email=$connection->real_escape_string($_POST["email"]);
@@ -11,8 +10,8 @@
 
                 $sql= "INSERT INTO users (username,email,password) VALUES ('$username','$email','$hashedPassword')";
                 if($connection->query($sql) == TRUE){
-                    echo 'Registration successful';
-                    header("Refresh:1; url=login.php");
+                    echo"<div class='alert alert-success'>New record created successfully</div>";
+                    header("Refresh: 1; URL=login.php");
                     exit();
                 }
                 else{
