@@ -1,7 +1,7 @@
 <?php
     include("connection.php");
 
-    $sql = "DELETE FROM employee WHERE SN='7' ";
+    $sql = "DELETE FROM employee WHERE id='7' ";
 
     if($connection->query($sql)==TRUE) {
         echo "Record deleted successfully";

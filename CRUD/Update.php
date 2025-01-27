@@ -1,7 +1,7 @@
 <?php
     include("connection.php");
     
-    $sql = "UPDATE employee SET Gender='Male' WHERE SN='8' ";
+    $sql = "UPDATE employee SET Gender='Male' WHERE id='8' ";
 
     if($connection->query($sql)==TRUE) {
         echo "Record updated successfully";
