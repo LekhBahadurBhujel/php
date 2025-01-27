@@ -9,7 +9,7 @@
         $course=$conn->real_escape_string($_POST["course"]);
         $gender=$conn->real_escape_string($_POST["Gender"]);
 
-        $sql = "INSERT INTO register (Name, Email, Mobile_Number, DOB, Program, Gender)
+        $sql = "INSERT INTO cmat (Name, Email, Phone_Number, DOB, Program, Gender)
         VALUES ('$name','$email','$phone_number','$DOB','$course','$gender') ";
 
         if($conn->query($sql) == TRUE){

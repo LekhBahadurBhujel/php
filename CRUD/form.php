@@ -13,7 +13,7 @@
                 
                 if($connection->query($sql) == TRUE){
                     echo"<div class='alert alert-success'>New record created successfully</div>";
-                    header("Refresh: 1; URL=login.php");
+                    header("Refresh: 1; URL=form.php");
                     exit();
                 }
                 else{
@@ -40,8 +40,8 @@
 </head>
 
 <body>
-    <h1>Medhavi Result Form</h1>
-    <form method="POST" action="login.php">
+    <h1>Medhavi Survey Form</h1>
+    <form method="POST" action="form.php">
         <div><label for="name">Name:</label>
             <input type="text" id="name" name="name" required placeholder="Full name" maxlength="50">
         </div>
